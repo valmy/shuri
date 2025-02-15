@@ -28,7 +28,9 @@ def top(
         """
         query getTopTokens($minVolume: BigDecimal!, $timestamp: Int!, $limit: Int!) {
             tokens(
-                first: $limit,
+                first: $limit
+                orderBy: volumeUSD
+                orderDirection: desc
                 where: { totalValueLockedUSD_gt: $minVolume }
             ) {
                 id
